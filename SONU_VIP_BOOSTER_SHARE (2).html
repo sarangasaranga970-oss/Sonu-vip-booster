@@ -121,5 +121,139 @@ function update(){const n=boxes.filter(x=>x.checked).length;const pct=Math.round
 boxes.forEach(x=>x.addEventListener('change',update));document.getElementById('reset').addEventListener('click',()=>{boxes.forEach(x=>x.checked=false);update()});
 let interval=null;document.getElementById('start').addEventListener('click',()=>{if(interval)clearInterval(interval);let left=10;const timer=document.getElementById('timer'),msg=document.getElementById('testmessage'),bar=document.getElementById('testbar'),btn=document.getElementById('start');btn.disabled=true;btn.textContent='Test එක සිදුවෙමින්...';timer.textContent=left;bar.style.width='0%';msg.textContent='Animation එක බලන්න; හැකි නම් screen එක touch නොකරන්න.';interval=setInterval(()=>{left--;timer.textContent=left;bar.style.width=((10-left)*10)+'%';if(left<=0){clearInterval(interval);interval=null;msg.textContent='Test එක අවසන්! මෙය browser animation පරීක්ෂාවක් පමණයි.';btn.disabled=false;btn.textContent='නැවත Test කරන්න';}},1000)});
 </script>
+<!-- SONU VIP GAMING SENSITIVITY -->
+<section class="card" id="sonuSensitivity">
+  <h2>🎯 VIP SENSITIVITY</h2>
+  <p>Free Fire / Free Fire MAX</p>
+
+  <label for="sonuGame">🎮 Game</label>
+  <select id="sonuGame">
+    <option value="ff">Free Fire</option>
+    <option value="max">Free Fire MAX</option>
+  </select>
+
+  <label for="sonuRam">📱 Phone RAM</label>
+  <select id="sonuRam">
+    <option value="2">2 GB</option>
+    <option value="3">3 GB</option>
+    <option value="4" selected>4 GB</option>
+    <option value="6">6 GB</option>
+    <option value="8">8 GB+</option>
+  </select>
+
+  <button type="button" id="sonuGenerate">
+    ⚡ SHOW SENSITIVITY
+  </button>
+
+  <div id="sonuResults"></div>
+  <p class="sonuNote">
+    These are starting values, not guaranteed
+    perfect settings. Test and adjust in game.
+  </p>
+</section>
+
+<style>
+#sonuSensitivity {
+  border: 1px solid #28baff;
+  box-shadow: 0 0 22px #0077ff44;
+}
+#sonuSensitivity label {
+  display: block;
+  margin: 14px 0 6px;
+  color: #b8c9e8;
+}
+#sonuSensitivity select,
+#sonuSensitivity button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+#sonuSensitivity select {
+  background: #101d38;
+  color: white;
+  border: 1px solid #28baff;
+}
+#sonuSensitivity button {
+  background: linear-gradient(90deg,#0077ff,#38bdf8);
+  color: white;
+  border: none;
+  font-weight: bold;
+}
+.sonuStat {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  margin: 7px 0;
+  background: #101d38;
+  border-radius: 9px;
+}
+.sonuStat strong {
+  color: #38bdf8;
+}
+.sonuNote {
+  font-size: 12px;
+  color: #b8c9e8;
+}
+</style>
+
+<script>
+(function () {
+  const game = document.getElementById("sonuGame");
+  const ram = document.getElementById("sonuRam");
+  const results = document.getElementById("sonuResults");
+  const button = document.getElementById("sonuGenerate");
+
+  const names = [
+    "General",
+    "Red Dot",
+    "2x Scope",
+    "4x Scope",
+    "Sniper Scope",
+    "Free Look"
+  ];
+
+  function showSensitivity() {
+    const values = [94, 89, 85, 79, 55, 70];
+    const ramValue = Number(ram.value);
+
+    // Example profiles for manual tuning.
+    const adjustment = ramValue >= 6 ? 2 :
+                       ramValue <= 3 ? -2 : 0;
+
+    const gameAdjustment = game.value === "max" ? -2 : 0;
+
+    results.replaceChildren();
+
+    names.forEach(function (name, index) {
+      const value = Math.max(
+        0,
+        Math.min(200,
+          values[index] + adjustment + gameAdjustment
+        )
+      );
+
+      const row = document.createElement("div");
+      row.className = "sonuStat";
+
+      const label = document.createElement("span");
+      label.textContent = name;
+
+      const number = document.createElement("strong");
+      number.textContent = value;
+
+      row.append(label, number);
+      results.appendChild(row);
+    });
+  }
+
+  button.addEventListener("click", showSensitivity);
+  game.addEventListener("change", showSensitivity);
+  ram.addEventListener("change", showSensitivity);
+
+  showSensitivity();
+})();
+</script>
 </body>
 </html>
