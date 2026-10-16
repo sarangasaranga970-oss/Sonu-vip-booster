@@ -1,0 +1,50 @@
+name: Build SONU VIP BOOSTER APK
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout files
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Prepare Android app
+        run: |
+          mkdir -p www
+          HTML_FILE=$(find . -maxdepth 1 -type f -iname '*.html' | head -n 1)
+          if [ -z "$HTML_FILE" ]; then
+            echo "HTML file not found"
+            exit 1
+          fi
+          cp "$HTML_FILE" www/index.html
+          echo '{"name":"sonu-vip-booster","version":"1.0.0","private":true}' > package.json
+          npm install @capacitor/core@6 @capacitor/cli@6 @capacitor/android@6
+          echo '{"appId":"com.sonu.vipbooster","appName":"SONU VIP BOOSTER","webDir":"www"}' > capacitor.config.json
+          npx cap add android
+
+      - name: Build APK
+        run: |
+          cd android
+          chmod +x gradlew
+          ./gradlew assembleDebug
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: SONU-VIP-BOOSTER-APK
+          path: android/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
