@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#10131f">
+<title>SONU VIP BOOSTER</title>
+<style>
+:root{color-scheme:dark;--bg:#10131f;--card:#1b2032;--line:#343b55;--text:#f4f6ff;--muted:#b9c1d9;--accent:#9cff57;--accent2:#57e6ff}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#202a44 0,#10131f 58%);font-family:system-ui,-apple-system,"Noto Sans Sinhala",sans-serif;color:var(--text);line-height:1.55}
+main{width:min(760px,100%);margin:auto;padding:22px 16px 44px}.hero{text-align:center;padding:24px 14px 18px}.logo{font-size:clamp(27px,7vw,44px);font-weight:900;letter-spacing:1px;line-height:1.1}.logo span{color:var(--accent)}.tag{color:var(--muted);margin:12px auto 0;max-width:520px}.status{display:inline-flex;align-items:center;gap:8px;margin-top:17px;border:1px solid #526044;border-radius:999px;padding:6px 13px;color:var(--accent);font-weight:700;font-size:13px}.dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent)}
+.card{background:rgba(27,32,50,.94);border:1px solid var(--line);border-radius:18px;padding:18px;margin:14px 0;box-shadow:0 12px 30px #0002}.card h2{font-size:19px;margin:0 0 10px}.muted{color:var(--muted);font-size:14px}.stats{display:grid;grid-template-columns:1fr 1fr;gap:12px}.stat{background:#121726;border-radius:13px;padding:14px;text-align:center}.number{font-size:27px;font-weight:850;color:var(--accent2)}.stat small{display:block;color:var(--muted)}.check{display:flex;align-items:flex-start;gap:11px;padding:12px 0;border-bottom:1px solid #30364b}.check:last-child{border-bottom:0}.check input{width:20px;height:20px;accent-color:var(--accent);margin-top:3px;flex-shrink:0}.check label{cursor:pointer}.progress{height:9px;border-radius:99px;background:#30364b;overflow:hidden;margin:12px 0 6px}.bar{height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .2s}.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}.btn{display:inline-flex;justify-content:center;align-items:center;text-decoration:none;border:0;border-radius:12px;padding:12px 15px;font-weight:800;background:var(--accent);color:#10131f;cursor:pointer;flex:1;min-width:150px}.btn.alt{background:#303a55;color:var(--text);border:1px solid #4b5674}.note{border-left:3px solid var(--accent2);padding:10px 12px;background:#111827;border-radius:0 10px 10px 0;color:var(--muted);font-size:14px}.testbox{text-align:center;background:#111827;border-radius:14px;padding:18px}.timer{font-size:38px;font-weight:900;color:var(--accent)}.smallprint{text-align:center;color:var(--muted);font-size:12px;margin-top:22px}a{color:var(--accent2)}button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid white;outline-offset:3px}
+@media(max-width:430px){.card{padding:15px}.stats{gap:8px}.number{font-size:23px}}
+</style>
+</head>
+<body>
+<main>
+<header class="hero">
+  <div class="logo">SONU <span>VIP</span><br>BOOSTER</div>
+  <p class="tag">Free Fire ගේම් එකට කලින් ඔබේ ෆෝන් එක සූදානම් කරගන්න.</p>
+  <div class="status"><span class="dot"></span> READY TO CHECK</div>
+</header>
+
+<section class="card">
+  <h2>📊 ඔබේ සූදානම් තත්ත්වය</h2>
+  <div class="stats">
+    <div class="stat"><div class="number" id="score">0%</div><small>Checklist progress</small></div>
+    <div class="stat"><div class="number" id="done">0/5</div><small>පියවර සම්පූර්ණයි</small></div>
+  </div>
+  <div class="progress"><div class="bar" id="bar"></div></div>
+  <p class="muted" id="message">පහත checklist එකේ පියවර සලකුණු කරන්න.</p>
+</section>
+
+<section class="card">
+  <h2>🎮 ගේම් එක ඇරන්න</h2>
+  <p class="muted">ඔබ භාවිතා කරන game version එක තෝරන්න.</p>
+  <div class="btns">
+    <a class="btn" href="https://play.google.com/store/apps/details?id=com.dts.freefireth" target="_blank" rel="noopener">Free Fire</a>
+    <a class="btn alt" href="https://play.google.com/store/apps/details?id=com.dts.freefiremax" target="_blank" rel="noopener">Free Fire MAX</a>
+  </div>
+  <p class="note" style="margin-top:14px">බටන් එකෙන් game එක නොඇරුණොත්, ෆෝන් එකේ game icon එකෙන් ඇරන්න.</p>
+</section>
+
+<section class="card">
+  <h2>📱 Game එකට කලින් checklist</h2>
+  <p class="muted">ඔබ කළ පියවරට ටික් එක දාන්න. ලකුණු ගණනය වෙන්නේ මේ checklist එක මත පමණයි.</p>
+  <div class="check"><input type="checkbox" id="c1"><label for="c1"><strong>Background apps වසන්න</strong><br><span class="muted">අවශ්‍ය නොවන apps වසා memory භාවිතය අඩු කරන්න.</span></label></div>
+  <div class="check"><input type="checkbox" id="c2"><label for="c2"><strong>Battery සහ phone temperature බලන්න</strong><br><span class="muted">ෆෝන් එක අධික ලෙස රත් වී ඇත්නම් ටිකක් සිසිල් වෙන්න දෙන්න.</span></label></div>
+  <div class="check"><input type="checkbox" id="c3"><label for="c3"><strong>Network signal පරීක්ෂා කරන්න</strong><br><span class="muted">Wi‑Fi හෝ mobile data signal එක හොඳද බලන්න.</span></label></div>
+  <div class="check"><input type="checkbox" id="c4"><label for="c4"><strong>Game graphics settings බලන්න</strong><br><span class="muted">Lag තියෙනවා නම් Smooth graphics සහ සුදුසු High FPS setting එක උත්සාහ කරන්න.</span></label></div>
+  <div class="check"><input type="checkbox" id="c5"><label for="c5"><strong>Storage ඉඩ පරීක්ෂා කරන්න</strong><br><span class="muted">ෆෝන් එකේ අවශ්‍ය ඉඩ තිබෙන බව තහවුරු කරගන්න.</span></label></div>
+  <div class="btns"><button class="btn alt" id="reset" type="button">Checklist reset කරන්න</button></div>
+</section>
+
+<section class="card">
+  <h2>⏱️ තත්පර 10 Browser Motion Test</h2>
+  <p class="muted">මෙය browser animation එකේ සුමට බව පෙන්වන සරල පරීක්ෂාවක් පමණයි. Free Fire ඇතුළත FPS එක මනින්නේ නැහැ.</p>
+  <div class="testbox">
+    <div class="timer" id="timer">10</div>
+    <p id="testmessage">පරීක්ෂාව ආරම්භ කිරීමට බටන් එක ඔබන්න.</p>
+    <button class="btn" id="start" type="button">Test එක පටන් ගන්න</button>
+    <div class="progress"><div class="bar" id="testbar"></div></div>
+  </div>
+</section>
+
+<section class="card">
+  <h2>⚙️ Lag අඩු කරගන්න උපදෙස්</h2>
+  <ul>
+    <li>ෆෝන් එක රත් වුණාම performance අඩු වෙන්න පුළුවන්. ගේම් කරන අතරතුර ෆෝන් එක රත් වෙනවා නම් විවේකයක් දෙන්න.</li>
+    <li>Lag තියෙනවා නම් Graphics එක Smooth කරලා FPS setting එක High/Max ලෙස, ෆෝන් එකට ගැළපෙන විදිහට තෝරන්න.</li>
+    <li>Settings → Apps → Free Fire → Storage තුළින් Clear cache කළ හැක. **Clear data** තෝරන්න එපා; එය app data ඉවත් කළ හැක.</li>
+    <li>Wi‑Fi signal දුර්වල නම් router එකට ළඟට යන්න.</li>
+    <li>මේ පිටුව game එක hack කරන්නේවත් RAM/CPU බලෙන් වැඩි කරන්නේවත් නැහැ. Ban අවදානම ඇති කරන hack tools භාවිතා නොකරන්න.</li>
+  </ul>
+</section>
+<p class="smallprint">SONU VIP BOOSTER · Community share version<br>මෙය phone preparation guide එකක් පමණයි; performance වැඩිවීම සහතික නොකරයි.</p>
+</main>
+<script>
+const boxes=[...document.querySelectorAll('.check input')];
+function update(){const n=boxes.filter(x=>x.checked).length;const pct=Math.round(n/boxes.length*100);document.getElementById('score').textContent=pct+'%';document.getElementById('done').textContent=n+'/'+boxes.length;document.getElementById('bar').style.width=pct+'%';document.getElementById('message').textContent=n===5?'හොඳයි! Checklist එක සම්පූර්ණයි.':n===0?'පහත checklist එකේ පියවර සලකුණු කරන්න.': 'තව '+(5-n)+' පියවරක් ඉතිරිව ඇත.'}
+boxes.forEach(x=>x.addEventListener('change',update));document.getElementById('reset').addEventListener('click',()=>{boxes.forEach(x=>x.checked=false);update()});
+let interval=null;document.getElementById('start').addEventListener('click',()=>{if(interval)clearInterval(interval);let left=10;const timer=document.getElementById('timer'),msg=document.getElementById('testmessage'),bar=document.getElementById('testbar'),btn=document.getElementById('start');btn.disabled=true;btn.textContent='Test එක සිදුවෙමින්...';timer.textContent=left;bar.style.width='0%';msg.textContent='Animation එක බලන්න; හැකි නම් screen එක touch නොකරන්න.';interval=setInterval(()=>{left--;timer.textContent=left;bar.style.width=((10-left)*10)+'%';if(left<=0){clearInterval(interval);interval=null;msg.textContent='Test එක අවසන්! මෙය browser animation පරීක්ෂාවක් පමණයි.';btn.disabled=false;btn.textContent='නැවත Test කරන්න';}},1000)});
+</script>
+</body>
+</html>
