@@ -262,10 +262,42 @@ let interval=null;document.getElementById('start').addEventListener('click',()=>
     <p>VIP Member Login 🔐</p>
     <input id="vipUsername" placeholder="Username" style="width:100%;padding:12px;margin:8px 0;box-sizing:border-box;">
     <input id="vipKey" type="password" placeholder="Activation Key" style="width:100%;padding:12px;margin:8px 0;box-sizing:border-box;">
-    <button type="button" onclick="alert('Login verification is not connected yet')" style="width:100%;padding:12px;background:#28baff;border:0;border-radius:10px;">
+    <button type="button" onclick="sonuLogin()" style="width:100%;padding:12px;background:#28baff;border:0;border-radius:10px;">
       LOGIN
     </button>
   </div>
+  <script>
+async function sonuLogin() {
+  const username = document.getElementById("vipUsername").value.trim();
+  const activationKey = document.getElementById("vipKey").value;
+
+  if (!username || !activationKey) {
+    alert("Enter Username and Activation Key");
+    return;
+  }
+
+  try {
+    const response = await fetch("https://cwqzjodgsnyynbksjugx.supabase.co/functions/v1/Sonu---login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ username, activationKey })
+    });
+
+    const result = await response.json();
+
+    if (response.ok && result.success === true) {
+      document.getElementById("sonuLogin").style.display = "none";
+      alert("Login Successful!");
+    } else {
+      alert("Invalid Username or Activation Key");
+    }
+  } catch (error) {
+    alert("Connection error. Please try again.");
+  }
+}
+  </script>
 </div>
 </body>
 </html>
