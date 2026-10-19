@@ -25,7 +25,7 @@ jobs:
       - name: Prepare Android app
         run: |
           mkdir -p www
-          HTML_FILE=$(find . -maxdepth 1 -type f -iname '*.html' | head -n 1)
+          HTML_FILE="./SONU_VIP_BOOSTER_V2 (1).html"
           if [ -z "$HTML_FILE" ]; then
             echo "HTML file not found"
             exit 1
