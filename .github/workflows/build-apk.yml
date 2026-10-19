@@ -25,7 +25,7 @@ jobs:
       - name: Prepare Android app
         run: |
           mkdir -p www
-          HTML_FILE="./SONU_VIP_BOOSTER_V2 (1).html"
+          HTML_FILE="./SONU_VIP_BOOSTER_BUILD_READY (1).html"
           if [ -z "$HTML_FILE" ]; then
             echo "HTML file not found"
             exit 1
@@ -36,7 +36,10 @@ jobs:
           npm install @capacitor/core@6 @capacitor/cli@6 @capacitor/android@6
           echo '{"appId":"com.sonu.vipbooster","appName":"SONU VIP BOOSTER","webDir":"www"}' > capacitor.config.json
           npx cap add android
-
+          mkdir -p assets
+          cp SONU_VIP_ICON.png assets/icon.png
+          npm install --save-dev @capacitor/assets
+          npx capacitor-assets generate --android --iconBackgroundColor '#090909'
       - name: Build APK
         run: |
           cd android
