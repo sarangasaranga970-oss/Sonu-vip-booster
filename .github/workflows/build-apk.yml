@@ -31,6 +31,7 @@ jobs:
             exit 1
           fi
           cp "$HTML_FILE" www/index.html
+          cp IMG-20261019-WA0012.jpg www/
           echo '{"name":"sonu-vip-booster","version":"1.0.0","private":true}' > package.json
           npm install @capacitor/core@6 @capacitor/cli@6 @capacitor/android@6
           echo '{"appId":"com.sonu.vipbooster","appName":"SONU VIP BOOSTER","webDir":"www"}' > capacitor.config.json
