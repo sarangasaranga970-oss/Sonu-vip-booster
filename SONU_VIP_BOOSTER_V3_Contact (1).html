@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#090909">
+<title>SONU VIP BOOSTER</title>
+<style>
+:root{color-scheme:dark;--bg:#10131f;--card:#1b2032;--line:#343b55;--text:#f4f6ff;--muted:#b9c1d9;--accent:#9cff57;--accent2:#57e6ff}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#202a44 0,#10131f 58%);font-family:system-ui,-apple-system,"Noto Sans Sinhala",sans-serif;color:var(--text);line-height:1.55}
+main{width:min(760px,100%);margin:auto;padding:22px 16px 44px}.hero{text-align:center;padding:24px 14px 18px}.logo{font-size:clamp(27px,7vw,44px);font-weight:900;letter-spacing:1px;line-height:1.1}.logo span{color:var(--accent)}.tag{color:var(--muted);margin:12px auto 0;max-width:520px}.status{display:inline-flex;align-items:center;gap:8px;margin-top:17px;border:1px solid #526044;border-radius:999px;padding:6px 13px;color:var(--accent);font-weight:700;font-size:13px}.dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent)}
+.card{background:rgba(27,32,50,.94);border:1px solid var(--line);border-radius:18px;padding:18px;margin:14px 0;box-shadow:0 12px 30px #0002}.card h2{font-size:19px;margin:0 0 10px}.muted{color:var(--muted);font-size:14px}.stats{display:grid;grid-template-columns:1fr 1fr;gap:12px}.stat{background:#121726;border-radius:13px;padding:14px;text-align:center}.number{font-size:27px;font-weight:850;color:var(--accent2)}.stat small{display:block;color:var(--muted)}.check{display:flex;align-items:flex-start;gap:11px;padding:12px 0;border-bottom:1px solid #30364b}.check:last-child{border-bottom:0}.check input{width:20px;height:20px;accent-color:var(--accent);margin-top:3px;flex-shrink:0}.check label{cursor:pointer}.progress{height:9px;border-radius:99px;background:#30364b;overflow:hidden;margin:12px 0 6px}.bar{height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .2s}.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}.btn{display:inline-flex;justify-content:center;align-items:center;text-decoration:none;border:0;border-radius:12px;padding:12px 15px;font-weight:800;background:var(--accent);color:#10131f;cursor:pointer;flex:1;min-width:150px}.btn.alt{background:#303a55;color:var(--text);border:1px solid #4b5674}.note{border-left:3px solid var(--accent2);padding:10px 12px;background:#111827;border-radius:0 10px 10px 0;color:var(--muted);font-size:14px}.testbox{text-align:center;background:#111827;border-radius:14px;padding:18px}.timer{font-size:38px;font-weight:900;color:var(--accent)}.smallprint{text-align:center;color:var(--muted);font-size:12px;margin-top:22px}a{color:var(--accent2)}button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid white;outline-offset:3px}
+@media(max-width:430px){.card{padding:15px}.stats{gap:8px}.number{font-size:23px}}
+ /* SONU VIP BOOSTER - Red Black Edition */
+:root {
+  --bg: #090909;
+  --card: #16090c;
+  --line: #72202c;
+  --accent: #FF1838;
+  --muted: #B8A0A5;
+}
+body {
+  background: radial-gradient(circle at top, #72000D 0%, #090909 65%);
+  color: #fff1f4;
+}
+.card {
+  background: linear-gradient(145deg, #16090C, #090909);
+  border: 1px solid rgba(255,24,56,0.42);
+  box-shadow: 0 8px 30px rgba(255,24,56,0.18);
+}
+.logo {
+  color: #fff1f4;
+  text-shadow: 0 0 22px rgba(255,24,56,0.6);
+}
+.logo span {
+  color: #FF1838;
+}
+.status {
+  border: 1px solid #FF1838;
+  box-shadow: 0 0 18px rgba(255,24,56,0.25);
+}
+.btn {
+  background: linear-gradient(90deg,#72000D,#FF1838);
+  color: white;
+  box-shadow: 0 4px 18px rgba(255,24,56,0.35);
+}
+.bar {
+  background: linear-gradient(90deg,#72000D,#FF1838);
+  box-shadow: 0 0 15px rgba(255,24,56,0.45);
+}
+input[type="checkbox"] {
+  accent-color: #FF1838;
+                              }
+
+/* V2 design polish */
+:root {--accent2:#ff7188;--line:#752333;--text:#fff1f4;--muted:#c6a8b0}
+.stat,.testbox,.note {background:#16090c}
+.btn.alt {background:#260d15;border:1px solid #a53048;color:#fff}
+.sonuStat {border:1px solid #692234}
+button, .btn {transition:transform .15s ease,box-shadow .2s ease}
+button:active,.btn:active {transform:scale(.98)}
+.card {animation:fadeRise .45s ease both}
+@keyframes fadeRise {from {opacity:0;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.card{animation:none}button,.btn{transition:none}}
+.v2grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.v2tile{border:1px solid #72202c;background:#140a0e;border-radius:12px;padding:13px;min-width:0}
+.v2tile b{display:block;font-size:19px;color:#ff7188;overflow-wrap:anywhere}
+.v2tile small{color:#c6a8b0}
+.v2input{width:100%;padding:12px;margin:8px 0;color:white;background:#090909;border:1px solid #a53048;border-radius:10px}
+.v2label{display:block;font-weight:650;margin-top:10px}
+.v2hint{font-size:12px;color:#c6a8b0}
+</style>
+</head>
+<body>
+<main>
+<header class="hero">
+  <div class="logo">SONU <span>VIP</span><br>BOOSTER</div>
+  <p class="tag">Free Fire ගේම් එකට කලින් ඔබේ ෆෝන් එක සූදානම් කරගන්න.</p>
+  <div class="status"><span class="dot"></span> READY TO CHECK</div>
+</header>
+
+<section class="card">
+  <h2>📊 ඔබේ සූදානම් තත්ත්වය</h2>
+  <div class="stats">
+    <div class="stat"><div class="number" id="score">0%</div><small>Checklist progress</small></div>
+    <div class="stat"><div class="number" id="done">0/5</div><small>පියවර සම්පූර්ණයි</small></div>
+  </div>
+  <div class="progress"><div class="bar" id="bar"></div></div>
+  <p class="muted" id="message">පහත checklist එකේ පියවර සලකුණු කරන්න.</p>
+</section>
+
+<section class="card">
+  <h2>🎮 ගේම් එක ඇරන්න</h2>
+  <p class="muted">ඔබ භාවිතා කරන game version එක තෝරන්න.</p>
+  <div class="btns">
+    <a class="btn" href="intent://#Intent;package=com.dts.freefireth;scheme=android-app;S.browser_fallback_url=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.dts.freefireth;end" target="_blank" rel="noopener">Free Fire</a>
+    <a class="btn alt" href="intent://#Intent;package=com.dts.freefiremax;scheme=android-app;S.browser_fallback_url=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.dts.freefiremax;end" target="_blank" rel="noopener">Free Fire MAX</a>
+  </div>
+  <p class="note" style="margin-top:14px">Launch button එක Android WebView එකේ වැඩ නොකරන්න පුළුවන්. එහෙම නම් game icon එකෙන් අරින්න; ස්වයංක්‍රීය account login නැහැ.</p>
+</section>
+
+<section class="card">
+  <h2>📱 Game එකට කලින් checklist</h2>
+  <p class="muted">ඔබ කළ පියවරට ටික් එක දාන්න. ලකුණු ගණනය වෙන්නේ මේ checklist එක මත පමණයි.</p>
+  <div class="check"><input type="checkbox" id="c1"><label for="c1"><strong>Background apps වසන්න</strong><br><span class="muted">අවශ්‍ය නොවන apps වසා memory භාවිතය අඩු කරන්න.</span></label></div>
+  <div class="check"><input type="checkbox" id="c2"><label for="c2"><strong>Battery සහ phone temperature බලන්න</strong><br><span class="muted">ෆෝන් එක අධික ලෙස රත් වී ඇත්නම් ටිකක් සිසිල් වෙන්න දෙන්න.</span></label></div>
+  <div class="check"><input type="checkbox" id="c3"><label for="c3"><strong>Network signal පරීක්ෂා කරන්න</strong><br><span class="muted">Wi‑Fi හෝ mobile data signal එක හොඳද බලන්න.</span></label></div>
+  <div class="check"><input type="checkbox" id="c4"><label for="c4"><strong>Game graphics settings බලන්න</strong><br><span class="muted">Lag තියෙනවා නම් Smooth graphics සහ සුදුසු High FPS setting එක උත්සාහ කරන්න.</span></label></div>
+  <div class="check"><input type="checkbox" id="c5"><label for="c5"><strong>Storage ඉඩ පරීක්ෂා කරන්න</strong><br><span class="muted">ෆෝන් එකේ අවශ්‍ය ඉඩ තිබෙන බව තහවුරු කරගන්න.</span></label></div>
+  <div class="btns"><button class="btn alt" id="reset" type="button">Checklist reset කරන්න</button></div>
+</section>
+
+<section class="card">
+  <h2>⏱️ තත්පර 10 Browser Motion Test</h2>
+  <p class="muted">මෙය browser animation එකේ සුමට බව පෙන්වන සරල පරීක්ෂාවක් පමණයි. Free Fire ඇතුළත FPS එක මනින්නේ නැහැ.</p>
+  <div class="testbox">
+    <div class="timer" id="timer">10</div>
+    <p id="testmessage">පරීක්ෂාව ආරම්භ කිරීමට බටන් එක ඔබන්න.</p>
+    <button class="btn" id="start" type="button">Test එක පටන් ගන්න</button>
+    <div class="progress"><div class="bar" id="testbar"></div></div>
+  </div>
+</section>
+
+<section class="card">
+  <h2>⚙️ Lag අඩු කරගන්න උපදෙස්</h2>
+  <ul>
+    <li>ෆෝන් එක රත් වුණාම performance අඩු වෙන්න පුළුවන්. ගේම් කරන අතරතුර ෆෝන් එක රත් වෙනවා නම් විවේකයක් දෙන්න.</li>
+    <li>Lag තියෙනවා නම් Graphics එක Smooth කරලා FPS setting එක High/Max ලෙස, ෆෝන් එකට ගැළපෙන විදිහට තෝරන්න.</li>
+    <li>Settings → Apps → Free Fire → Storage තුළින් Clear cache කළ හැක. **Clear data** තෝරන්න එපා; එය app data ඉවත් කළ හැක.</li>
+    <li>Wi‑Fi signal දුර්වල නම් router එකට ළඟට යන්න.</li>
+    <li>මේ පිටුව game එක hack කරන්නේවත් RAM/CPU බලෙන් වැඩි කරන්නේවත් නැහැ. Ban අවදානම ඇති කරන hack tools භාවිතා නොකරන්න.</li>
+  </ul>
+</section>
+
+<section class="card" id="v2Dashboard">
+ <h2>❤️‍🔥 VIP Gaming Dashboard</h2>
+ <p class="muted">සැබෑ තොරතුරු ලැබුණොත් පමණක් පෙන්වයි. Game FPS හෝ RAM boost කරන බවට සහතික නැහැ.</p>
+ <div class="v2grid">
+  <div class="v2tile"><small>🔋 Battery</small><b id="v2Battery">Unavailable</b><small id="v2Charge">Device support අවශ්‍යයි</small></div>
+  <div class="v2tile"><small>📱 Device RAM (estimate)</small><b id="v2Ram">Unavailable</b><small>Live free RAM නොවේ</small></div>
+  <div class="v2tile"><small>🎮 Game FPS</small><b>Unavailable</b><small>HTML එකෙන් FF FPS මනින්න බැහැ</small></div>
+  <div class="v2tile"><small>🌐 Network</small><b id="v2Network">Checking…</b><small>Online status පමණයි</small></div>
+ </div>
+</section>
+<section class="card" id="v2Session">
+ <h2>⏱️ Game Session Timer</h2>
+ <p class="muted">App එක ඇතුළේ ගතවන වෙලාව. Game එක වෙනම Open කළොත් timer එක නවතින්න පුළුවන්.</p>
+ <div class="timer" id="v2Time">00:00:00</div>
+ <div class="btns"><button class="btn" type="button" id="v2Start">▶ Start</button><button class="btn alt" type="button" id="v2Pause">⏸ Pause</button><button class="btn alt" type="button" id="v2Reset">↻ Reset</button></div>
+</section>
+<section class="card" id="v2Profiles">
+ <h2>🎯 Saved Sensitivity Profiles</h2>
+ <p class="muted">ඉහළ VIP Sensitivity settings වලින් values තෝරාගෙන profile එකක් ලෙස මේ phone එකේ Save කරන්න.</p>
+ <label class="v2label" for="v2ProfileName">Profile name</label><input class="v2input" id="v2ProfileName" placeholder="My Free Fire Settings" maxlength="40">
+ <div class="btns"><button class="btn" type="button" id="v2SaveProfile">💾 Save Profile</button></div>
+ <label class="v2label" for="v2ProfileList">Saved profiles</label><select class="v2input" id="v2ProfileList"><option value="">No profiles yet</option></select>
+ <div class="btns"><button class="btn alt" type="button" id="v2LoadProfile">Load</button><button class="btn alt" type="button" id="v2DeleteProfile">Delete</button></div>
+ <p class="v2hint" id="v2ProfileMsg">Profiles මේ device එකේ පමණක් Save වේ. Game එකට auto apply වෙන්නේ නැහැ.</p>
+</section>
+<section class="card" id="v2Vip">
+ <h2>👑 VIP Membership</h2>
+ <div class="v2tile"><small>VIP Expiry Date</small><b id="v2Expiry">Not available</b><small>Server එකෙන් expiry data ලැබුණු පසු පෙන්වයි</small></div>
+ <p class="v2hint">VIP Expiry Date එක enforce කිරීමට Supabase backend එකත් වෙනස් කරන්න ඕනේ. මේ display එකෙන් තනිවම account expire වෙන්නේ නැහැ.</p>
+</section>
+<section class="card" id="v2Contact">
+ <h2>💬 Buy VIP — Contact Admin</h2>
+ <p class="muted">WhatsApp Button එකෙන් සෘජුව Contact කරන්න, නැත්නම් පහත Form එක පුරවා WhatsApp හරහා යවන්න.</p>
+ <button class="btn" id="v2Whatsapp" type="button">💬 Message on WhatsApp</button>
+ <p class="v2hint" id="v2WhatsappHint">WhatsApp එකෙන් Adminට සෘජුව Message කරන්න පුළුවන්.</p>
+ <div class="v2support-divider">නැත්නම් පහත Contact Form එක පුරවන්න</div>
+ <form id="v3ContactForm" class="v3-contact-form">
+  <label class="v2label" for="v3ContactName">👤 Your name</label>
+  <input id="v3ContactName" class="v2input" name="name" maxlength="70" autocomplete="name" required placeholder="Your name">
+  <label class="v2label" for="v3ContactUsername">🔐 VIP username (optional)</label>
+  <input id="v3ContactUsername" class="v2input" name="username" maxlength="70" placeholder="VIP username">
+  <label class="v2label" for="v3ContactTopic">📌 Message type</label>
+  <select id="v3ContactTopic" class="v2input" name="topic"><option>Buy VIP</option><option>Activation help</option><option>Technical support</option><option>Other</option></select>
+  <label class="v2label" for="v3ContactMessage">📝 Your message</label>
+  <textarea id="v3ContactMessage" class="v2input" name="message" rows="4" maxlength="1000" required placeholder="Write your message..."></textarea>
+  <button class="btn" id="v3ContactSend" type="submit">📨 Send form via WhatsApp</button>
+  <p class="v2hint" id="v3ContactStatus" role="status" aria-live="polite">Send කළාම WhatsApp එක විවෘත වේ. Message එක WhatsApp තුළ Send ඔබන්න. Activation Key හෝ Password ඇතුළත් කරන්න එපා.</p>
+ </form>
+</section>
+
+<p class="smallprint">SONU VIP BOOSTER · Community share version<br>මෙය phone preparation guide එකක් පමණයි; performance වැඩිවීම සහතික නොකරයි.</p>
+</main>
+<script>
+const boxes=[...document.querySelectorAll('.check input')];
+function update(){const n=boxes.filter(x=>x.checked).length;const pct=Math.round(n/boxes.length*100);document.getElementById('score').textContent=pct+'%';document.getElementById('done').textContent=n+'/'+boxes.length;document.getElementById('bar').style.width=pct+'%';document.getElementById('message').textContent=n===5?'හොඳයි! Checklist එක සම්පූර්ණයි.':n===0?'පහත checklist එකේ පියවර සලකුණු කරන්න.': 'තව '+(5-n)+' පියවරක් ඉතිරිව ඇත.'}
+boxes.forEach(x=>x.addEventListener('change',update));document.getElementById('reset').addEventListener('click',()=>{boxes.forEach(x=>x.checked=false);update()});
+let interval=null;document.getElementById('start').addEventListener('click',()=>{if(interval)clearInterval(interval);let left=10;const timer=document.getElementById('timer'),msg=document.getElementById('testmessage'),bar=document.getElementById('testbar'),btn=document.getElementById('start');btn.disabled=true;btn.textContent='Test එක සිදුවෙමින්...';timer.textContent=left;bar.style.width='0%';msg.textContent='Animation එක බලන්න; හැකි නම් screen එක touch නොකරන්න.';interval=setInterval(()=>{left--;timer.textContent=left;bar.style.width=((10-left)*10)+'%';if(left<=0){clearInterval(interval);interval=null;msg.textContent='Test එක අවසන්! මෙය browser animation පරීක්ෂාවක් පමණයි.';btn.disabled=false;btn.textContent='නැවත Test කරන්න';}},1000)});
+</script>
+<!-- SONU VIP GAMING SENSITIVITY -->
+<section class="card" id="sonuSensitivity">
+  <h2>🎯 VIP SENSITIVITY</h2>
+  <p>Free Fire / Free Fire MAX</p>
+
+  <label for="sonuGame">🎮 Game</label>
+  <select id="sonuGame">
+    <option value="ff">Free Fire</option>
+    <option value="max">Free Fire MAX</option>
+  </select>
+
+  <label for="sonuRam">📱 Phone RAM</label>
+  <select id="sonuRam">
+    <option value="2">2 GB</option>
+    <option value="3">3 GB</option>
+    <option value="4" selected>4 GB</option>
+    <option value="6">6 GB</option>
+    <option value="8">8 GB+</option>
+  </select>
+
+  <button type="button" id="sonuGenerate">
+    ⚡ SHOW SENSITIVITY
+  </button>
+
+  <div id="sonuResults"></div>
+  <p class="sonuNote">
+    These are starting values, not guaranteed
+    perfect settings. Test and adjust in game.
+  </p>
+</section>
+
+<style>
+#sonuSensitivity {
+  border: 1px solid #FF1838;
+  box-shadow: 0 0 22px #ff183844;
+}
+#sonuSensitivity label {
+  display: block;
+  margin: 14px 0 6px;
+  color: #e1bfc7;
+}
+#sonuSensitivity select,
+#sonuSensitivity button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+#sonuSensitivity select {
+  background: #16090C;
+  color: white;
+  border: 1px solid #FF1838;
+}
+#sonuSensitivity button {
+  background: linear-gradient(90deg,#72000D,#FF1838);
+  color: white;
+  border: none;
+  font-weight: bold;
+}
+.sonuStat {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  margin: 7px 0;
+  background: #16090C;
+  border-radius: 9px;
+}
+.sonuStat strong {
+  color: #FF1838;
+}
+.sonuNote {
+  font-size: 12px;
+  color: #e1bfc7;
+}
+</style>
+
+<script>
+(function () {
+  const game = document.getElementById("sonuGame");
+  const ram = document.getElementById("sonuRam");
+  const results = document.getElementById("sonuResults");
+  const button = document.getElementById("sonuGenerate");
+
+  const names = [
+    "General",
+    "Red Dot",
+    "2x Scope",
+    "4x Scope",
+    "Sniper Scope",
+    "Free Look"
+  ];
+
+  function showSensitivity() {
+    const values = [94, 89, 85, 79, 55, 70];
+    const ramValue = Number(ram.value);
+
+    // Example profiles for manual tuning.
+    const adjustment = ramValue >= 6 ? 2 :
+                       ramValue <= 3 ? -2 : 0;
+
+    const gameAdjustment = game.value === "max" ? -2 : 0;
+
+    results.replaceChildren();
+
+    names.forEach(function (name, index) {
+      const value = Math.max(
+        0,
+        Math.min(200,
+          values[index] + adjustment + gameAdjustment
+        )
+      );
+
+      const row = document.createElement("div");
+      row.className = "sonuStat";
+
+      const label = document.createElement("span");
+      label.textContent = name;
+
+      const number = document.createElement("strong");
+      number.textContent = value;
+
+      row.append(label, number);
+      results.appendChild(row);
+    });
+  }
+
+  button.addEventListener("click", showSensitivity);
+  game.addEventListener("change", showSensitivity);
+  ram.addEventListener("change", showSensitivity);
+
+  showSensitivity();
+})();
+</script>
+ 
+ 
+<script>
+(function(){
+ const $=id=>document.getElementById(id);
+ function network(){ $('v2Network').textContent=navigator.onLine?'Online':'Offline'; }
+ network();window.addEventListener('online',network);window.addEventListener('offline',network);
+ if(navigator.deviceMemory) $('v2Ram').textContent='~'+navigator.deviceMemory+' GB';
+ if(navigator.getBattery){navigator.getBattery().then(b=>{
+  const update=()=>{ $('v2Battery').textContent=Math.round(b.level*100)+'%';$('v2Charge').textContent=b.charging?'Charging':'Not charging';};
+  update();b.addEventListener('levelchange',update);b.addEventListener('chargingchange',update);
+ }).catch(()=>{});}
+ let elapsed=0,started=null,tick=null;
+ const render=()=>{let n=elapsed+(started===null?0:Math.floor((Date.now()-started)/1000));$('v2Time').textContent=[Math.floor(n/3600),Math.floor(n%3600/60),n%60].map(v=>String(v).padStart(2,'0')).join(':');};
+ $('v2Start').onclick=()=>{if(started!==null)return;started=Date.now();tick=setInterval(render,500);render();};
+ $('v2Pause').onclick=()=>{if(started!==null){elapsed+=Math.floor((Date.now()-started)/1000);started=null;clearInterval(tick);}render();};
+ $('v2Reset').onclick=()=>{started=null;elapsed=0;clearInterval(tick);render();};
+ const key='sonu-v2-sensitivity-profiles';
+ function read(){try{let v=JSON.parse(localStorage.getItem(key)||'[]');return Array.isArray(v)?v:[]}catch{return []}}
+ function refresh(){let sel=$('v2ProfileList'),list=read();sel.replaceChildren();if(!list.length){sel.add(new Option('No profiles yet',''));return;}list.forEach((p,i)=>sel.add(new Option(p.name+' ('+(p.game==='max'?'MAX':'FF')+')',String(i))));}
+ $('v2SaveProfile').onclick=()=>{let name=$('v2ProfileName').value.trim();if(!name){$('v2ProfileMsg').textContent='මුලින් profile name එකක් දාන්න.';return;}let list=read();if(list.length>=20){$('v2ProfileMsg').textContent='Maximum 20 profiles.';return;}let values=[...document.querySelectorAll('#sonuResults .sonuStat strong')].map(x=>x.textContent);list.push({name,game:$('sonuGame').value,ram:$('sonuRam').value,values});try{localStorage.setItem(key,JSON.stringify(list));refresh();$('v2ProfileMsg').textContent='Saved! Game එකට auto apply වෙන්නේ නැහැ.';}catch{$('v2ProfileMsg').textContent='Storage unavailable.';}};
+ $('v2LoadProfile').onclick=()=>{let p=read()[Number($('v2ProfileList').value)];if(!p)return;$('sonuGame').value=p.game;$('sonuRam').value=p.ram;$('sonuGenerate').click();if(p.values?.length){[...document.querySelectorAll('#sonuResults .sonuStat strong')].forEach((el,i)=>{if(p.values[i]!==undefined)el.textContent=p.values[i]});}$('v2ProfileMsg').textContent='Loaded '+p.name+' — in-game settings අතින් දාන්න.';};
+ $('v2DeleteProfile').onclick=()=>{let index=Number($('v2ProfileList').value),list=read();if(!list.length)return;list.splice(index,1);try{localStorage.setItem(key,JSON.stringify(list));refresh();$('v2ProfileMsg').textContent='Profile deleted.';}catch{}};
+ refresh();
+ // Set only a public business WhatsApp number (country code, digits only) when ready.
+ const adminWhatsApp='94764495922';
+ const openAdminWhatsApp=(message)=>{const link='https://wa.me/'+adminWhatsApp+'?text='+encodeURIComponent(message);window.location.href=link;};
+ $('v2Whatsapp').onclick=()=>{const msg='Hello! I would like to buy SONU VIP BOOSTER VIP access. Please send price and details.';openAdminWhatsApp(msg);};
+ $('v3ContactForm').addEventListener('submit',(event)=>{
+  event.preventDefault();
+  const name=$('v3ContactName').value.trim();
+  const username=$('v3ContactUsername').value.trim();
+  const topic=$('v3ContactTopic').value;
+  const msg=$('v3ContactMessage').value.trim();
+  if(!name||!msg){$('v3ContactStatus').textContent='Name සහ Message දෙකම පුරවන්න.';return;}
+  const body='SONU VIP BOOSTER — CONTACT FORM\nName: '+name+'\nVIP Username: '+(username||'Not provided')+'\nTopic: '+topic+'\nMessage: '+msg;
+  $('v3ContactStatus').textContent='WhatsApp එක විවෘත වෙනවා. එතැනින් Send ඔබන්න. මේ Form එකෙන් Database එකකට Message Save වෙන්නේ නැහැ.';
+  openAdminWhatsApp(body);
+ });
+})();
+</script>
+
+
+<style>
+.v2support-divider{text-align:center;color:#f3aab6;font-weight:700;margin:22px 0 8px;padding-top:12px;border-top:1px solid #67232e}
+.v3-contact-form{display:grid;gap:6px}
+.v3-contact-form .v2input{width:100%;min-width:0;background:#0d090b;border:1px solid #a42a3c;color:#fff;border-radius:10px;padding:12px;font:inherit}
+.v3-contact-form textarea{resize:vertical;min-height:100px}
+.v3-contact-form .btn{margin-top:12px;width:100%}
+</style>
+
+<!-- SONU VIP LOGIN SCREEN -->
+<div id="sonuLogin" style="position:fixed;inset:0;z-index:9999;background:#090909;display:flex;align-items:center;justify-content:center;padding:20px;">
+  <div style="width:100%;max-width:350px;background:#16090C;padding:25px;border:1px solid #FF1838;border-radius:18px;text-align:center;color:white;">
+    <h2>⚡ SONU VIP BOOSTER</h2>
+   <img src="IMG-20261019-WA0012.jpg"
+     alt="SONU VIP BOOSTER"
+     style="width:100%;height:210px;object-fit:cover;object-position:center 62%;border-radius:14px;border:2px solid #FF1838;display:block;margin-bottom:15px;">
+    <p>VIP Member Login 🔐</p>
+    <input id="vipUsername" placeholder="Username" autocomplete="username" style="width:100%;padding:12px;margin:8px 0;box-sizing:border-box;background:#090909;color:#FFFFFF;border:1px solid #FF1838;border-radius:10px;">
+     <input id="vipKey" type="password" autocomplete="current-password" placeholder="Activation Key" style="width:100%;padding:12px;margin:8px 0;box-sizing:border-box;background:#090909;color:#FFFFFF;border:1px solid #FF1838;border-radius:10px;">
+    <button type="button" onclick="sonuLogin()" style="width:100%;padding:12px;background:linear-gradient(90deg, #72000D, #FF1838);border:0;border-radius:10px;">
+      LOGIN
+    </button>
+  </div>
+  <script>
+async function sonuLogin() {
+  const username = document.getElementById("vipUsername").value.trim();
+  const activationKey = document.getElementById("vipKey").value;
+
+  if (!username || !activationKey) {
+    alert("Enter Username and Activation Key");
+    return;
+  }
+
+  try {
+    const response = await fetch("https://cwqzjodgsnyynbksjugx.supabase.co/functions/v1/Sonu---login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ username, activationKey })
+    });
+
+    const result = await response.json();
+
+    if (response.ok && result.success === true) {
+      document.getElementById("sonuLogin").style.display = "none";
+      alert("Login Successful!");
+    } else {
+      alert("Invalid Username or Activation Key");
+    }
+  } catch (error) {
+    alert("Connection error. Please try again.");
+  }
+}
+  </script>
+</div>
+</body>
+</html>
