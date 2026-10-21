@@ -1,33 +1,27 @@
 name: Build SONU VIP BOOSTER APK
-
 on:
   workflow_dispatch:
-
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout files
         uses: actions/checkout@v4
-
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: '17'
-
       - name: Prepare Android app
         run: |
           mkdir -p www
-          HTML_FILE="./SONU_VIP_BOOSTER_V8_FINAL.html"
-          if [ -z "$HTML_FILE" ]; then
-            echo "HTML file not found"
+          HTML_FILE='./SONU_VIP_BOOSTER_V8_FINAL.html'
+          if [ ! -f "$HTML_FILE" ]; then
+            echo 'HTML file not found'
             exit 1
           fi
           cp "$HTML_FILE" www/index.html
@@ -40,12 +34,113 @@ jobs:
           cp SONU_VIP_ICON.png assets/icon.png
           npm install --save-dev @capacitor/assets
           npx capacitor-assets generate --android --iconBackgroundColor '#090909'
+      - name: Add secure Android game launcher
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          pkg = Path('android/app/src/main/java/com/sonu/vipbooster')
+          pkg.mkdir(parents=True, exist_ok=True)
+          main = pkg / 'MainActivity.java'
+          source = main.read_text()
+          assert 'extends BridgeActivity' in source, 'Capacitor MainActivity not found'
+          source = source.replace('public class MainActivity extends BridgeActivity {', '''public class MainActivity extends BridgeActivity {
+            @Override public void onCreate(android.os.Bundle savedInstanceState) {
+              registerPlugin(SonuGamesPlugin.class);
+              super.onCreate(savedInstanceState);
+            }''')
+          main.write_text(source)
+          (pkg / 'SonuGamesPlugin.java').write_text('''package com.sonu.vipbooster;
+          import android.content.Intent;
+          import android.net.Uri;
+          import com.getcapacitor.JSObject;
+          import com.getcapacitor.Plugin;
+          import com.getcapacitor.PluginCall;
+          import com.getcapacitor.PluginMethod;
+          import com.getcapacitor.annotation.CapacitorPlugin;
+
+          @CapacitorPlugin(name = "SonuGames")
+          public class SonuGamesPlugin extends Plugin {
+            @PluginMethod
+            public void open(PluginCall call) {
+              String game = call.getString("game", "");
+              String packageName;
+              if ("ff".equals(game)) packageName = "com.dts.freefireth";
+              else if ("max".equals(game)) packageName = "com.dts.freefiremax";
+              else { call.reject("Unsupported game"); return; }
+              try {
+                Intent launch = getContext().getPackageManager().getLaunchIntentForPackage(packageName);
+                if (launch != null) {
+                  launch.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                  getContext().startActivity(launch);
+                  JSObject result = new JSObject();
+                  result.put("opened", true);
+                  call.resolve(result);
+                } else {
+                  Intent store = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + packageName));
+                  store.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                  getContext().startActivity(store);
+                  JSObject result = new JSObject();
+                  result.put("opened", false);
+                  call.resolve(result);
+                }
+              } catch (Exception ex) {
+                call.reject("Unable to open game", ex);
+              }
+            }
+          }
+          ''')
+          manifest = Path('android/app/src/main/AndroidManifest.xml')
+          xml = manifest.read_text()
+          assert '</manifest>' in xml
+          xml = xml.replace('</manifest>', '''<queries>
+            <package android:name="com.dts.freefireth" />
+            <package android:name="com.dts.freefiremax" />
+          </queries>
+          </manifest>''')
+          manifest.write_text(xml)
+          page = Path('www/index.html')
+          html = page.read_text()
+          inject = r'''<script>
+          (function(){
+            window.v8OpenGame = async function(pkg){
+              var game = pkg === 'com.dts.freefiremax' ? 'max' :
+                         pkg === 'com.dts.freefireth' ? 'ff' : null;
+              if (!game) return;
+              var api = window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.SonuGames;
+              if (api) {
+                try { await api.open({game:game}); }
+                catch(err) { alert('Game could not be opened. Please launch it from your phone.'); }
+              } else { alert('Game launch requires the installed Android APK.'); }
+            };
+            document.addEventListener('click', async function(e){
+              var link = e.target.closest('a[href^="intent://"]');
+              if (!link) return;
+              var href = link.getAttribute('href') || '';
+              var game = href.includes('com.dts.freefiremax') ? 'max' :
+                         href.includes('com.dts.freefireth') ? 'ff' : null;
+              if (!game) return;
+              e.preventDefault();
+              e.stopImmediatePropagation();
+              var api = window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.SonuGames;
+              if (api) {
+                try { await api.open({game:game}); }
+                catch(err) { alert('Game could not be opened. Please try launching it from your phone.'); }
+              } else {
+                alert('Game launch works in the installed Android APK.');
+              }
+            }, true);
+          })();
+          </script>'''
+          assert '</body>' in html.lower(), 'No HTML body found'
+          import re
+          html = re.sub(r'</body>', lambda m: inject+'\n'+m.group(0), html, count=1, flags=re.I)
+          page.write_text(html)
+          PY
       - name: Build APK
         run: |
           cd android
           chmod +x gradlew
           ./gradlew assembleDebug
-
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
