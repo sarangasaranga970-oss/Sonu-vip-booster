@@ -112,21 +112,29 @@ jobs:
                 catch(err) { alert('Game could not be opened. Please launch it from your phone.'); }
               } else { alert('Game launch requires the installed Android APK.'); }
             };
+            // Catch BOTH V8 button onclicks and legacy intent:// links.
+            // Capturing avoids the old HTML handler navigating to an unsupported intent URL.
             document.addEventListener('click', async function(e){
-              var link = e.target.closest('a[href^="intent://"]');
-              if (!link) return;
-              var href = link.getAttribute('href') || '';
-              var game = href.includes('com.dts.freefiremax') ? 'max' :
-                         href.includes('com.dts.freefireth') ? 'ff' : null;
+              var target = e.target.closest('[onclick*="v8OpenGame"], a[href^="intent://"]');
+              if (!target) return;
+              var source = (target.getAttribute('onclick') || '') + ' ' + (target.getAttribute('href') || '');
+              var game = source.includes('com.dts.freefiremax') ? 'max' :
+                         source.includes('com.dts.freefireth') ? 'ff' : null;
               if (!game) return;
               e.preventDefault();
               e.stopImmediatePropagation();
+              var msg = document.getElementById('v8LauncherMessage');
+              if (msg) msg.textContent = 'Opening ' + (game === 'max' ? 'Free Fire MAX' : 'Free Fire') + ' via Android launcher…';
               var api = window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.SonuGames;
-              if (api) {
-                try { await api.open({game:game}); }
-                catch(err) { alert('Game could not be opened. Please try launching it from your phone.'); }
-              } else {
-                alert('Game launch works in the installed Android APK.');
+              if (!api || typeof api.open !== 'function') {
+                if (msg) msg.textContent = 'Android game launcher unavailable in this build.';
+                return;
+              }
+              try {
+                var result = await api.open({game:game});
+                if (result && result.opened === false && msg) msg.textContent = 'Game not installed; opening Play Store.';
+              } catch(err) {
+                if (msg) msg.textContent = 'Could not open game: ' + (err && err.message ? err.message : 'Android launcher error');
               }
             }, true);
           })();
