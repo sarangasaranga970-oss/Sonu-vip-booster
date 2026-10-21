@@ -19,7 +19,7 @@ jobs:
       - name: Prepare Android app
         run: |
           mkdir -p www
-          HTML_FILE='./SONU_VIP_BOOSTER_V8_FINAL.html'
+          HTML_FILE='SONU_VIP_BOOSTER_V8_CUSTOMER_FIX.html'
           if [ ! -f "$HTML_FILE" ]; then
             echo 'HTML file not found'
             exit 1
